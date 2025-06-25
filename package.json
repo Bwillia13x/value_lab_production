@@ -1,41 +1,53 @@
 {
   "name": "value-lab-fundfetcher",
   "version": "1.0.0",
-  "type": "commonjs",
+  "private": true,
   "scripts": {
-    "test": "jest",
-    "lint": "eslint . --ext .ts",
-    "build": "tsc",
-    "build:prod": "npm run lint && npm run build",
-    "dev": "ts-node src/server.ts",
-    "start": "node dist/src/server.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
+    "@auth/supabase-adapter": "^1.10.0",
     "@supabase/supabase-js": "^2.39.0",
-    "express": "^4.19.2",
+    "alphavantage": "^2.5.0",
+    "chart.js": "^4.4.2",
+    "chartjs-plugin-zoom": "^2.2.0",
     "ioredis": "^5.3.2",
-    "node-fetch": "^2.6.7"
+    "jspdf": "^3.0.1",
+    "jspdf-autotable": "^5.0.2",
+    "mathjs": "^14.5.2",
+    "next": "14.2.3",
+    "next-auth": "^4.24.11",
+    "next-themes": "^0.4.6",
+    "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.2",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.30",
-    "@types/node-fetch": "^2.6.4",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
     "jest": "^29.7.0",
-    "prettier": "^3.3.2",
+    "jest-environment-jsdom": "^29.7.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.4.3"
+    "typescript": "^5"
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "verbose": true,
     "testMatch": [
-      "**/?(*.)+(int.test).[jt]s?(x)"
+      "**/?(*.)+(test).[jt]s?(x)"
     ],
     "testTimeout": 30000,
     "coverageReporters": [
