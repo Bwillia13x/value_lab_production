@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 export async function getMarketSentiment(ticker: string): Promise<any> {
   try {
     // This is a placeholder for a real sentiment analysis API

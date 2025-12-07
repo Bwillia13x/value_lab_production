@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 export interface Webhook {
   url: string;
   event: string;

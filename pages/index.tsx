@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { Chart } from 'chart.js/auto';
-import zoomPlugin from 'chartjs-plugin-zoom';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import { runMonteCarloSimulation, SimulationResult } from '../src/services/monteCarlo';
@@ -10,8 +9,6 @@ import { getRealTimeQuote, getFundamentals } from '../src/services/marketData';
 import { generatePdfReport } from '../src/services/reporting';
 import { getMarketSentiment } from '../src/services/sentiment';
 import { runBacktest, BacktestingResult } from '../src/services/backtesting';
-
-Chart.register(zoomPlugin);
 
 const Home = () => {
   const { data: session, status } = useSession();
@@ -103,7 +100,7 @@ const Home = () => {
   };
 
   const handleRunBacktest = async () => {
-    const result = await runBacktest(null, selectedTickers[0], (returns) => {
+    const result = await runBacktest(selectedTickers[0], (returns) => {
       // Example strategy: simple moving average crossover
       const sma20 = returns.slice(0, 20).reduce((a, b) => a + b, 0) / 20;
       const sma50 = returns.slice(0, 50).reduce((a, b) => a + b, 0) / 50;
@@ -116,6 +113,13 @@ const Home = () => {
     });
     setBacktestResult(result);
   };
+
+  // Register chart.js zoom plugin only on client side
+  useEffect(() => {
+    import('chartjs-plugin-zoom').then((zoomPlugin) => {
+      Chart.register(zoomPlugin.default);
+    });
+  }, []);
 
   useEffect(() => {
     if (status === 'authenticated') {

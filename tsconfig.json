@@ -26,7 +26,11 @@
   "include": [
     "src/**/*.ts",
     "tests/**/*.ts",
-    "__tests__/**/*.ts"
+    "__tests__/**/*.ts",
+    "pages/**/*",
+    "components/**/*",
+    "types/**/*",
+    "next-env.d.ts"
   ],
   "exclude": [
     "node_modules"
