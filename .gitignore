@@ -1,6 +1,9 @@
 # Node dependencies
 node_modules/
 
+# Next.js build output
+.next/
+
 # Test coverage
 coverage/
 

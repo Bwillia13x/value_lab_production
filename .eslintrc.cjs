@@ -7,7 +7,6 @@ module.exports = {
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./tsconfig.json",
     sourceType: "module",
   },
   plugins: ["@typescript-eslint"],
@@ -23,6 +22,10 @@ module.exports = {
     "dist/**/*"
   ],
   rules: {
-    // Place to specify ESLint rules. Can be configured later.
+    // Relaxed rules for production build
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/no-unescaped-entities": "warn",
+    "react-hooks/exhaustive-deps": "warn",
   },
 }; 

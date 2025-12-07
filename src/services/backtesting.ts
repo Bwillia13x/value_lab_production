@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 export interface BacktestingResult {
   finalValue: number;
   cagr: number;
