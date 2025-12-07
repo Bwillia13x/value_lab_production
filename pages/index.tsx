@@ -116,9 +116,13 @@ const Home = () => {
 
   // Register chart.js zoom plugin only on client side
   useEffect(() => {
-    import('chartjs-plugin-zoom').then((zoomPlugin) => {
-      Chart.register(zoomPlugin.default);
-    });
+    import('chartjs-plugin-zoom')
+      .then((zoomPlugin) => {
+        Chart.register(zoomPlugin.default);
+      })
+      .catch((error) => {
+        console.error('Failed to load chartjs-plugin-zoom:', error);
+      });
   }, []);
 
   useEffect(() => {

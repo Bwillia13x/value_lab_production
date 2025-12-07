@@ -1,8 +1,10 @@
 import alphavantage from 'alphavantage';
 
-let alpha: any = null;
+type AlphaVantageInstance = ReturnType<typeof alphavantage> | null;
 
-function getAlpha() {
+let alpha: AlphaVantageInstance = null;
+
+function getAlpha(): AlphaVantageInstance {
   if (!alpha && process.env.ALPHA_VANTAGE_API_KEY) {
     alpha = alphavantage({ key: process.env.ALPHA_VANTAGE_API_KEY });
   }
